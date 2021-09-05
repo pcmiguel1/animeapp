@@ -68,10 +68,19 @@ public class MainActivity extends AppCompatActivity {
     private void updateApp() {
 
         new AppUpdater(this)
+                .showEvery(5)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("pcmiguel1", "animeapp")
                 .setDisplay(Display.DIALOG)
                 .showAppUpdated(true)
+                .setCancelable(false)
+                .setTitleOnUpdateAvailable("Update available")
+                .setContentOnUpdateAvailable("Check out the latest version available of my app!")
+                .setTitleOnUpdateNotAvailable("Update not available")
+                .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
+                .setButtonUpdate("Update now?")
+                .setButtonDismiss("Maybe later")
+                .setButtonDoNotShowAgain("Huh, not interested")
                 .start();
 
     }
