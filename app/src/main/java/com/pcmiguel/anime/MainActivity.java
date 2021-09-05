@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         AppUpdaterUtils appUpdaterUtils = new AppUpdaterUtils(this)
                 .setUpdateFrom(UpdateFrom.GITHUB)
-                .setGitHubUserAndRepo("pcmiguel1", "AppUpdater")
+                .setGitHubUserAndRepo("pcmiguel1", "animeapp")
                 .withListener(new AppUpdaterUtils.UpdateListener() {
                     @Override
                     public void onSuccess(Update update, Boolean isUpdateAvailable) {
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailed(AppUpdaterError error) {
-                        Log.d("AppUpdater Error", "Something went wrong");
+                        Log.d("AppUpdater Error", "Something went wrong2");
                     }
                 });
         appUpdaterUtils.start();
