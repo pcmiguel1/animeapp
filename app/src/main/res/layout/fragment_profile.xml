@@ -271,7 +271,7 @@
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
                                             android:fontFamily="@font/montserratlight"
-                                            android:text="2"
+                                            android:text="3"
                                             android:textSize="13sp"
                                             android:layout_alignParentRight="true"
                                             android:layout_centerVertical="true"
