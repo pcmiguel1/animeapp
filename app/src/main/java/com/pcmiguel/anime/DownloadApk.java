@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -122,30 +122,12 @@ public class DownloadApk extends Activity {
                 InputStream input = new BufferedInputStream(url.openStream(),
                         8192);
 
-                String PATH = Environment
-                        .getExternalStorageDirectory().toString()
-                        + "/Download/";
+                String PATH = Environment.getExternalStorageDirectory().toString() + "/Download/";
 
                 File file = new File(PATH);
                 file.mkdirs();
                 File outputFile = new File(file,"app-debug.apk");
 
-                File[] files = file.listFiles();
-                for (int i = 0; i < files.length; i++)
-                {
-                    System.out.println("FileName:" + files[i].getName());
-                }
-
-                final PackageManager pm = context.getPackageManager();
-                PackageInfo info = pm.getPackageArchiveInfo(PATH+"/app-debug.apk", 0);
-
-                System.out.println("V1: " + BuildConfig.VERSION_NAME);
-                System.out.println("V2: " + info.versionName);
-
-                /*if (BuildConfig.VERSION_NAME.equals(info.versionName)) {
-                    Toast.makeText(context,"It already has the latest update",
-                            Toast.LENGTH_SHORT).show();
-                }*/
                 if(outputFile.exists()){
                     outputFile.delete();
                 }
@@ -166,15 +148,29 @@ public class DownloadApk extends Activity {
                     output.write(data, 0, count);
                 }
 
-                // flushing output
-                output.flush();
+                PackageManager pm = context.getPackageManager();
+                PackageInfo info = pm.getPackageArchiveInfo(outputFile.getPath(), 0);
 
-                // closing streams
-                output.close();
-                input.close();
+                if (BuildConfig.VERSION_NAME.equals(info.versionName)) {
+                    Looper.prepare();
+                    Toast.makeText(context,"Already has the latest update",
+                            Toast.LENGTH_SHORT).show();
 
-                OpenNewVersion(PATH);
-                flag = true;
+                    // closing streams
+                    output.close();
+                    input.close();
+
+                } else {
+                    // flushing output
+                    output.flush();
+
+                    // closing streams
+                    output.close();
+                    input.close();
+
+                    OpenNewVersion(PATH);
+                    flag = true;
+                }
 
             } catch (MalformedURLException e) {
                 Log.e(TAG, "Update Error: " + e.getMessage());
