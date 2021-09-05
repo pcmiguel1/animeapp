@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.AppUpdaterUtils;
 import com.github.javiersantos.appupdater.enums.AppUpdaterError;
+import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.github.javiersantos.appupdater.objects.Update;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -65,22 +67,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateApp() {
 
-        AppUpdaterUtils appUpdaterUtils = new AppUpdaterUtils(this)
-                //.setUpdateFrom(UpdateFrom.AMAZON)
+        new AppUpdater(this)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("pcmiguel1", "animeapp")
-                //...
-                .withListener(new AppUpdaterUtils.UpdateListener() {
-                    @Override
-                    public void onSuccess(Update update, Boolean isUpdateAvailable) {
-                        System.out.println(update.getLatestVersion() + update.getUrlToDownload());
-                    }
+                .setDisplay(Display.DIALOG)
+                .showAppUpdated(true)
+                .start();
 
-                    @Override
-                    public void onFailed(AppUpdaterError error) {
-                        Log.d("AppUpdater Error", "Something went wrong");
-                    }
-                });
-        appUpdaterUtils.start();
     }
 }
