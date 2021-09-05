@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailed(AppUpdaterError error) {
-                        Log.d("AppUpdater Error", "Something went wrong2");
+                        Log.d("AppUpdater Error", "Something went wrong");
                     }
                 });
         appUpdaterUtils.start();
