@@ -5,15 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.github.javiersantos.appupdater.AppUpdater;
-import com.github.javiersantos.appupdater.AppUpdaterUtils;
-import com.github.javiersantos.appupdater.enums.AppUpdaterError;
-import com.github.javiersantos.appupdater.enums.Display;
-import com.github.javiersantos.appupdater.enums.UpdateFrom;
-import com.github.javiersantos.appupdater.objects.Update;
+import com.dcastalia.localappupdate.DownloadApk;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,21 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateApp() {
 
-        new AppUpdater(this)
-                .showEvery(5)
-                .setUpdateFrom(UpdateFrom.GITHUB)
-                .setGitHubUserAndRepo("pcmiguel1", "animeapp")
-                .setDisplay(Display.DIALOG)
-                .showAppUpdated(true)
-                .setCancelable(false)
-                .setTitleOnUpdateAvailable("Update available")
-                .setContentOnUpdateAvailable("Check out the latest version available of my app!")
-                .setTitleOnUpdateNotAvailable("Update not available")
-                .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
-                .setButtonUpdate("Update now?")
-                .setButtonDismiss("Maybe later")
-                .setButtonDoNotShowAgain("Huh, not interested")
-                .start();
+        String url = "https://github.com/Piashsarker/AndroidAppUpdateLibrary/raw/master/app-debug.apk";
 
+        DownloadApk downloadApk = new DownloadApk(MainActivity.this);
+
+        downloadApk.startDownloadingApk(url);
     }
 }
