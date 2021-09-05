@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -106,12 +108,48 @@ public class DownloadApk extends Activity {
 
         @Override
         protected Boolean doInBackground(String... arg0) {
+            int count;
             Boolean flag = false;
             try {
                 URL url = new URL(downloadUrl);
                 URLConnection c = url.openConnection();
                 c.connect();
-                String PATH = Environment.getExternalStorageDirectory()+"/Download/";
+
+                int lenghtOfFile = c.getContentLength();
+
+                InputStream input = new BufferedInputStream(url.openStream(),
+                        8192);
+
+                String PATH = Environment
+                        .getExternalStorageDirectory().toString()
+                        + "/app-debug.apk";
+                OutputStream output = new FileOutputStream(PATH);
+
+                byte data[] = new byte[1024];
+
+                long total = 0;
+
+                while ((count = input.read(data)) != -1) {
+                    total += count;
+                    // publishing the progress....
+                    // After this onProgressUpdate will be called
+                    publishProgress((int) ((total * 100) / lenghtOfFile));
+
+                    // writing data to file
+                    output.write(data, 0, count);
+                }
+
+                // flushing output
+                output.flush();
+
+                // closing streams
+                output.close();
+                input.close();
+
+                OpenNewVersion(PATH);
+                flag = true;
+
+                /*String PATH = Environment.getExternalStorageDirectory()+"/Download/";
                 File file = new File(PATH);
                 file.mkdirs();
                 File outputFile = new File(file,"app-debug.apk");
@@ -121,7 +159,9 @@ public class DownloadApk extends Activity {
                 }
 
                 FileOutputStream fos = new FileOutputStream(outputFile);
-                InputStream is = c.getInputStream();
+
+                InputStream is =  new BufferedInputStream(url.openStream(),
+                        8192);
 
                 float total_size = c.getContentLength();//size of apk
 
@@ -139,6 +179,7 @@ public class DownloadApk extends Activity {
                 is.close();
                 OpenNewVersion(PATH);
                 flag = true;
+                 */
             } catch (MalformedURLException e) {
                 Log.e(TAG, "Update Error: " + e.getMessage());
                 flag = false;
