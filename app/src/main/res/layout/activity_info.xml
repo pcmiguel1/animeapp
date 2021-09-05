@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoActivity"
+    android:background="@color/colorPrimaryDark"
+    android:padding="25dp">
+
+    <ImageView
+        android:onClick="back"
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_round_arrow_back_24"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"/>
+
+    <LinearLayout
+        android:layout_below="@+id/back"
+        android:layout_marginTop="10dp"
+        android:id="@+id/lay_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_image"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="230dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false">
+
+            <ImageView
+                android:id="@+id/anime_info_img"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/anime_info_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:fontFamily="@font/montserratsemibold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/anime_info_generos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserratlight"
+                android:textColor="@color/colorAccent"
+                android:textSize="12dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/anime_info_ano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserratlight"
+                android:textSize="15dp"
+                android:textColor="#FFF"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/series_volumes"
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_round_tv_24"
+                        android:layout_gravity="center_vertical"
+                        android:adjustViewBounds="true"/>
+
+                    <TextView
+                        android:id="@+id/anime_info_episodios"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:fontFamily="@font/montserratlight"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="3dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_round_star_24"
+                        android:layout_gravity="center_vertical"
+                        android:adjustViewBounds="true"/>
+
+                    <TextView
+                        android:id="@+id/anime_info_classificacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:fontFamily="@font/montserratlight"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="3dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_library"
+                android:onClick="openLibrary"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:background="@drawable/custom_search"
+                android:text="Add to Library"
+                android:textColor="#FFF"
+                android:fontFamily="@font/montserratlight"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@+id/lay_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/text_info_anime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserratlight"
+            android:textColor="#FFF"
+            android:textSize="13dp" />
+
+    </ScrollView>
+
+</RelativeLayout>

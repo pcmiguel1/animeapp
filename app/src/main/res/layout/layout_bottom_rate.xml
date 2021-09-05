@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetRate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/top_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/montserratsemibold"
+            android:textColor="@color/colorAccent"
+            android:textSize="15dp"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap to Rate"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/montserratsemibold"
+            android:textColor="@color/colorWhite"
+            android:textSize="15dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/btn_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/montserratsemibold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/top_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/rate0"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_round_radio_button_unchecked_24"
+            android:alpha="0.3"/>
+
+        <ImageView
+            android:id="@+id/rate1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/surprised_100px"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.3"/>
+
+        <ImageView
+            android:id="@+id/rate2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/boring_100px"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.3"/>
+
+        <ImageView
+            android:id="@+id/rate3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/lol_100px"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.3"/>
+
+        <ImageView
+            android:id="@+id/rate4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/smiling_100px"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.3"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
