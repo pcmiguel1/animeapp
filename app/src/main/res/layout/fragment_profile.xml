@@ -95,6 +95,7 @@
                                 android:layout_height="wrap_content">
 
                                 <LinearLayout
+                                    android:visibility="gone"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentLeft="true"
@@ -148,15 +149,54 @@
 
                             </RelativeLayout>
 
-                            <ProgressBar
-                                android:progress="40"
-                                android:id="@+id/progressBar_anime_status"
+                            <LinearLayout
                                 android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:indeterminateOnly="false"
-                                android:progressDrawable="@drawable/custom_progress_bg2"/>
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+                                
+                                <RelativeLayout
+                                    android:id="@+id/barWatching"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_1"
+                                    android:backgroundTint="#2CB039"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barWantToWatch"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_2"
+                                    android:backgroundTint="#284390"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barOnHold"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_2"
+                                    android:backgroundTint="#4B3601"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barDropped"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_2"
+                                    android:backgroundTint="#A12E31"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barCompleted"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_3"
+                                    android:backgroundTint="#C3C3C3"/>
+                                
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -271,7 +311,7 @@
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
                                             android:fontFamily="@font/montserratlight"
-                                            android:text="5"
+                                            android:text="0"
                                             android:textSize="13sp"
                                             android:layout_alignParentRight="true"
                                             android:layout_centerVertical="true"
@@ -302,6 +342,7 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/dropped"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -337,6 +378,7 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/completed"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -373,15 +415,15 @@
                                             android:layout_alignParentLeft="true"/>
 
                                         <TextView
+                                            android:id="@+id/totalEntries"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:textColor="#FFF"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_marginRight="10dp"
                                             android:fontFamily="@font/montserratlight"
                                             android:text="0"
-                                            android:textSize="13sp"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginRight="10dp"/>
+                                            android:textColor="#FFF"
+                                            android:textSize="13sp" />
 
                                     </RelativeLayout>
                                     <RelativeLayout
@@ -400,6 +442,7 @@
                                             android:layout_alignParentLeft="true"/>
 
                                         <TextView
+                                            android:id="@+id/rewatched"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -427,6 +470,7 @@
                                             android:layout_alignParentLeft="true"/>
 
                                         <TextView
+                                            android:id="@+id/episodes"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -476,6 +520,7 @@
                                 android:layout_height="wrap_content">
 
                                 <LinearLayout
+                                    android:visibility="gone"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentLeft="true"
@@ -529,15 +574,54 @@
 
                             </RelativeLayout>
 
-                            <ProgressBar
-                                android:progress="40"
-                                android:id="@+id/progressBar_manga_status"
+                            <LinearLayout
                                 android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:indeterminateOnly="false"
-                                android:progressDrawable="@drawable/custom_progress_bg2"/>
+                                android:orientation="horizontal"
+                                android:weightSum="100">
+
+                                <RelativeLayout
+                                    android:id="@+id/barWatchingM"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_1"
+                                    android:backgroundTint="#2CB039"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barWantToWatchM"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_2"
+                                    android:backgroundTint="#284390"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barOnHoldM"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_2"
+                                    android:backgroundTint="#4B3601"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barDroppedM"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_2"
+                                    android:backgroundTint="#A12E31"/>
+
+                                <RelativeLayout
+                                    android:id="@+id/barCompletedM"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/custom_satus_bar_3"
+                                    android:backgroundTint="#C3C3C3"/>
+
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -575,15 +659,15 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/reading"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:textColor="#FFF"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_marginRight="10dp"
                                             android:fontFamily="@font/montserratlight"
                                             android:text="0"
-                                            android:textSize="13sp"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginRight="10dp"/>
+                                            android:textColor="#FFF"
+                                            android:textSize="13sp" />
 
                                     </RelativeLayout>
                                     <RelativeLayout
@@ -610,6 +694,7 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/wantToRead"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -645,6 +730,7 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/onHoldManga"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -680,6 +766,7 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/droppedManga"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -715,6 +802,7 @@
                                             android:layout_centerVertical="true"/>
 
                                         <TextView
+                                            android:id="@+id/completedManga"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -751,6 +839,7 @@
                                             android:layout_alignParentLeft="true"/>
 
                                         <TextView
+                                            android:id="@+id/totalEntriesManga"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"
@@ -767,11 +856,12 @@
                                         android:layout_height="wrap_content">
 
                                         <TextView
+                                            android:id="@+id/reread"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="@color/colorAccent"
                                             android:fontFamily="@font/montserratlight"
-                                            android:text="Rewatched"
+                                            android:text="Reread"
                                             android:textSize="13sp"
                                             android:layout_marginLeft="10dp"
                                             android:layout_centerVertical="true"
@@ -805,6 +895,7 @@
                                             android:layout_alignParentLeft="true"/>
 
                                         <TextView
+                                            android:id="@+id/volumes"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="#FFF"

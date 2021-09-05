@@ -98,19 +98,26 @@
                         android:src="@drawable/ic_round_search_24"
                         android:layout_gravity="center_vertical"/>
 
-                    <EditText
-                        android:id="@+id/search_input"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserratlight"
-                        android:hint="Search here"
-                        android:background="@android:color/transparent"
-                        android:textColorHint="@color/colorAccent"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginLeft="5dp"
-                        android:padding="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="15dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/search_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserratlight"
+                            android:hint="Search here"
+                            android:background="@android:color/transparent"
+                            android:textColorHint="@color/colorAccent"
+                            android:textColor="@color/colorAccent"
+                            android:layout_marginLeft="5dp"
+                            android:padding="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="15dp"/>
+
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
