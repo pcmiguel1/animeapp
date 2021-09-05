@@ -122,8 +122,17 @@ public class DownloadApk extends Activity {
 
                 String PATH = Environment
                         .getExternalStorageDirectory().toString()
-                        + "/app-debug.apk";
-                OutputStream output = new FileOutputStream(PATH);
+                        + "/Download/";
+
+                File file = new File(PATH);
+                file.mkdirs();
+                File outputFile = new File(file,"app-debug.apk");
+
+                if(outputFile.exists()){
+                    outputFile.delete();
+                }
+
+                OutputStream output = new FileOutputStream(outputFile);
 
                 byte data[] = new byte[1024];
 
