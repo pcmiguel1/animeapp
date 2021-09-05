@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import com.github.javiersantos.appupdater.AppUpdaterUtils;
 import com.github.javiersantos.appupdater.enums.AppUpdaterError;
@@ -69,12 +66,14 @@ public class MainActivity extends AppCompatActivity {
     private void updateApp() {
 
         AppUpdaterUtils appUpdaterUtils = new AppUpdaterUtils(this)
+                //.setUpdateFrom(UpdateFrom.AMAZON)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("pcmiguel1", "animeapp")
+                //...
                 .withListener(new AppUpdaterUtils.UpdateListener() {
                     @Override
                     public void onSuccess(Update update, Boolean isUpdateAvailable) {
-
+                        System.out.println(update.getLatestVersion() + update.getUrlToDownload());
                     }
 
                     @Override
@@ -83,6 +82,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         appUpdaterUtils.start();
-
     }
 }
