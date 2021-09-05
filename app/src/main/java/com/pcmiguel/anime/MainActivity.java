@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.dcastalia.localappupdate.DownloadApk;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateApp() {
 
-        String url = "https://github.com/Piashsarker/AndroidAppUpdateLibrary/raw/master/app-debug.apk";
+        String url = "https://github.com/pcmiguel1/animeapp/raw/master/app-debug.apk";
 
         DownloadApk downloadApk = new DownloadApk(MainActivity.this);
 
