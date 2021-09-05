@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -128,6 +130,22 @@ public class DownloadApk extends Activity {
                 file.mkdirs();
                 File outputFile = new File(file,"app-debug.apk");
 
+                File[] files = file.listFiles();
+                for (int i = 0; i < files.length; i++)
+                {
+                    System.out.println("FileName:" + files[i].getName());
+                }
+
+                final PackageManager pm = context.getPackageManager();
+                PackageInfo info = pm.getPackageArchiveInfo(PATH+"/app-debug.apk", 0);
+
+                System.out.println("V1: " + BuildConfig.VERSION_NAME);
+                System.out.println("V2: " + info.versionName);
+
+                /*if (BuildConfig.VERSION_NAME.equals(info.versionName)) {
+                    Toast.makeText(context,"It already has the latest update",
+                            Toast.LENGTH_SHORT).show();
+                }*/
                 if(outputFile.exists()){
                     outputFile.delete();
                 }
@@ -158,37 +176,6 @@ public class DownloadApk extends Activity {
                 OpenNewVersion(PATH);
                 flag = true;
 
-                /*String PATH = Environment.getExternalStorageDirectory()+"/Download/";
-                File file = new File(PATH);
-                file.mkdirs();
-                File outputFile = new File(file,"app-debug.apk");
-
-                if(outputFile.exists()){
-                    outputFile.delete();
-                }
-
-                FileOutputStream fos = new FileOutputStream(outputFile);
-
-                InputStream is =  new BufferedInputStream(url.openStream(),
-                        8192);
-
-                float total_size = c.getContentLength();//size of apk
-
-                byte[] buffer = new byte[1024];
-                int len1 = 0;
-                float per = 0;
-                float downloaded=0;
-                while ((len1 = is.read(buffer)) != -1) {
-                    fos.write(buffer, 0, len1);
-                    downloaded +=len1;
-                    per = (downloaded * 100 / total_size);
-                    publishProgress((int) per);
-                }
-                fos.close();
-                is.close();
-                OpenNewVersion(PATH);
-                flag = true;
-                 */
             } catch (MalformedURLException e) {
                 Log.e(TAG, "Update Error: " + e.getMessage());
                 flag = false;
