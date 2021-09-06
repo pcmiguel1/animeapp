@@ -57,7 +57,7 @@ public class AdapterList extends RecyclerView.Adapter<AdapterList.ViewHolder> {
         return animeList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView img, rateImg, previous, next;
         private TextView text_nome, rateText, currentEpisode;
@@ -79,6 +79,8 @@ public class AdapterList extends RecyclerView.Adapter<AdapterList.ViewHolder> {
             next = itemView.findViewById(R.id.next);
             optionsLibrary = itemView.findViewById(R.id.optionsLibrary);
             status = itemView.findViewById(R.id.status);
+
+            itemView.setOnClickListener(this);
 
         }
 
@@ -295,11 +297,17 @@ public class AdapterList extends RecyclerView.Adapter<AdapterList.ViewHolder> {
 
         }
 
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            mOnClickListener.onItemClickInfo(position);
+        }
     }
 
     interface ListItemClickListener {
         void onItemClick(int position, int rate, int animeId);
         void pnext(int position, boolean next, int animeId);
         void loadOptionsLibrary(int position, int animeId);
+        void onItemClickInfo(int position);
     }
 }

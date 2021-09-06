@@ -596,6 +596,13 @@ public class ListFragment extends Fragment implements AdapterCategory.ListItemCl
 
     }
 
+    @Override
+    public void onItemClickInfo(int position) {
+        Intent intent = new Intent(getActivity(), InfoActivity.class);
+        intent.putExtra("id", animeList.get(position).getId());
+        startActivity(intent);
+    }
+
     public void removeAnimeLibrary(int animeId) {
 
         String url = MainActivity.HOST_URL + "/api/animes/"+animeId+"/remove";
